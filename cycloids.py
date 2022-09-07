@@ -1,11 +1,12 @@
 
 import numpy as np
+import cmath as m
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.widgets import Slider, Button, RadioButtons
 
 
-plt.style.use('dark_background')
+plt.style.use('dark_background') #Darkness of the void lol
 
 fig, ax = plt.subplots(figsize=(10, 5))
 plt.axis('off')
@@ -40,16 +41,16 @@ t = np.arange(0, len, delta)
 
 def hipo_draw(k, k2, h, p):
     r = R / k
-    x = (R - r) * np.cos(t) + h * np.cos(t - R * t / r)
-    y = (R - r) * np.sin(t) + h * np.sin(t - R * t / r)
+    x = (R - r) * m.cos(t) + h * m.cos(t - R * t / r)
+    y = (R - r) * m.sin(t) + h * m.sin(t - R * t / r)
     print('r = ', r, 'R = ', R, 'h = ', h)
     print('r = ', r, 'R = ', R, 'h = ', h)
     return x, y
 
 def epi_draw(k, k2, h, p):
     r = R / k
-    x = (R + r) * np.cos(t) - h * np.cos(t + R * t / r)
-    y = (R + r) * np.sin(t) - h * np.sin(t + R * t / r)
+    x = (R + r) * m.cos(t) - h * m.cos(t + R * t / r)
+    y = (R + r) * m.sin(t) - h * m.sin(t + R * t / r)
     print('r = ', r, 'R = ', R, 'h = ', h)
     print('r = ', r, 'R = ', R, 'h = ', h)
     return x, y
@@ -65,8 +66,8 @@ def epi2_draw(k, k2, h, p):
     # x = (R + r) * np.cos(t) + (r + r2) * np.cos(t - t * R/r) + h * np.cos(t - t*R/r - t*R/r2)
     # y = (R + r) * np.sin(t) + (r + r2) * np.sin(t - t * R/r) + h * np.sin(t - t*R/r - t*R/r2)
 
-    x = (R + r) * np.cos(t) + (r + r2) * np.cos(t + (R*t)/r - R*t/(p*r)) + h * np.cos(t + R*t/r - R*t/(p*r) - R*t/(p*r2))
-    y = (R + r) * np.sin(t) + (r + r2) * np.sin(t + (R*t)/r - R*t/(p*r)) + h * np.sin(t + R*t/r - R*t/(p*r) - R*t/(p*r2))
+    x = (R + r) * m.cos(t) + (r + r2) * m.cos(t + (R*t)/r - R*t/(p*r)) + h * m.cos(t + R*t/r - R*t/(p*r) - R*t/(p*r2))
+    y = (R + r) * m.sin(t) + (r + r2) * m.sin(t + (R*t)/r - R*t/(p*r)) + h * m.sin(t + R*t/r - R*t/(p*r) - R*t/(p*r2))
     print('r = ', r, 'R = ', R, 'h = ', h)
     print('r = ', r, 'R = ', R, 'h = ', h)
     return x, y
@@ -74,8 +75,8 @@ def epi2_draw(k, k2, h, p):
 def hipo2_draw(k, k2, h, p):
     r = R / k
     r2 = r / k2
-    x = (R + r) * np.cos(t) - (r - r2) * np.cos(-t) + h * np.cos(t + r * t / r2)
-    y = (R + r) * np.sin(t) - (r - r2) * np.sin(-t) + h * np.sin(t + r * t / r2)
+    x = (R + r) * m.cos(t) - (r - r2) * m.cos(-t) + h * m.cos(t + r * t / r2)
+    y = (R + r) * m.sin(t) - (r - r2) * m.sin(-t) + h * m.sin(t + r * t / r2)
     print(R, r, r2)
     return x, y
 
